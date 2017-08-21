@@ -1,0 +1,44 @@
+body{
+		font-family: 'Bitter', Arial, 'Georgia', Times, Times New Roman, serif !important;
+		overflow-x: hidden;
+}
+
+h1{
+
+}
+.navbar{
+	color:#ebebeb !important;
+}
+
+#start{
+	height: 100px;
+    -webkit-animation: mymove 0.5s infinite; /* Safari 4.0 - 8.0 */
+    animation: mymove 0.5s infinite;
+}
+
+#section{
+	display: none;
+}
+
+#startOver{
+	display: none;
+}
+
+#wrong{
+	display: none;
+}
+
+#win{
+	display: none;
+}
+
+
+@keyframes mymove {
+    from {height: 105px}
+    to {height: 100px;}
+
+}
+
+.green{
+	border: 2px solid green !important;
+}
