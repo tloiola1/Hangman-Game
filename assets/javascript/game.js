@@ -1,5 +1,7 @@
 document.getElementById("start").addEventListener("click", function(){
-	document.getElementById("start").style.display= "none";
+	document.getElementById("start").style.display="none";
+	document.getElementById("section").style.display="initial";
+
 
 	game();
 
@@ -7,8 +9,11 @@ document.getElementById("start").addEventListener("click", function(){
 
 var words = ["apple", "mango", "pinapple"];
 
-var wins = 0;
 var tries = 10;
+
+var test = [];
+
+var control = 0;
 
 
 
@@ -20,18 +25,14 @@ var pcPicked = words[Math.floor(Math.random() * words.length)];
 
 var str = pcPicked;
 
-var test = [];
-
-
-
 for (var i = 0; i < pcPicked.length; i++) {
  	
  	test[i] = " _ ";
 }
 
 
-document.getElementById("myWord").innerHTML = "  " + test;
-document.getElementById("losses").innerHTML = "You Have " + tries + " tries.";
+document.getElementById("myWord").innerHTML = " " + test;
+document.getElementById("tries").innerHTML = tries;
 
 document.onkeyup = function(event){
 
@@ -40,24 +41,43 @@ var userGuess = event.key;
 if (userGuess.toLowerCase() < String.fromCharCode(97) || userGuess.toLowerCase() > String.fromCharCode(122) ||
 	userGuess < String.fromCharCode(97) || userGuess > String.fromCharCode(122)){
 
-	document.getElementById("startOver").style.display= "initial";
+	document.getElementById("wrong").style.display= "initial";
+	
 }
 
 else if (userGuess >= String.fromCharCode(97) || userGuess <= String.fromCharCode(122)){
-	var a;
-	var b = -1;
-	var str = pcPicked;
 
-	var pos = str.indexOf(userGuess);
+	document.getElementById("wrong").style.display= "none";
+
+//Form Here
+		var control = 0;
 
 		for (var i = 0; i < pcPicked.length; i++) {
 			
 			if(pcPicked.charAt(i) == userGuess ){
+					control = 1;
 					test[i] = userGuess;
 			}
+
 		}
+
+		if(control == 0){
+			
+		console.log("Control = " + control);
+		tries--;
+		document.getElementById("tries").innerHTML = tries;
+	if (tries<1) {
+		console.log("Tries = " + tries);
+			
+			game();
+
+		}
+
+	}
 	
-	
+
+//To here	
+
 	document.getElementById("startOver").style.display= "none";
 
 	document.getElementById("myWord").innerHTML = test;
@@ -65,22 +85,6 @@ else if (userGuess >= String.fromCharCode(97) || userGuess <= String.fromCharCod
 	document.getElementById("youChose").innerHTML = userGuess;
 
 
-
-	
-	if( > -1){
-	document.getElementById("has").innerHTML = wins;
-	
-	}
-
-	else {
-	tries--;
-	document.getElementById("losses").innerHTML = "You Have " + tries + " tries.";
-	if (tries < 1) {
-		document.getElementById("startOver").style.display= "initial";
-		document.getElementById("startOver").innerHTML= "<big>Game Over</big> <br> <small>Try again</small>";
-		startOver();
-	}
-	}
 }
 
 };
@@ -90,9 +94,20 @@ else if (userGuess >= String.fromCharCode(97) || userGuess <= String.fromCharCod
 function startOver(){
 document.getElementById("startOver").addEventListener("click", function(){
 	
-	document.getElementById("startOver").style.display= "none";
+	document.getElementById("startOver").style.display = "none";
+	document.getElementById("section").style.display = "initial";
+	document.getElementById("youChose").innerHTML = " ";
 	tries = 10;
 	game();
 
 });
 }
+
+
+
+
+// for(var i = 0; i <+ str.length; i++){
+    
+//     str = str.replace(str.charAt(i), "_");
+
+// }

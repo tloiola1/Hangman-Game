@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Psychic-Game</title>
+	<title>Hangman-Game</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
@@ -19,9 +20,9 @@
 		<nav class="container text-center">
 			
 			<h1>
-					Psychic
+					HangMan
 			</h1>
-			<h5> I dare you to play.</h5>
+			<h5> Just hang in there.</h5>
 		</nav>
 		
 	</header>
@@ -30,11 +31,13 @@
 					
 		<div class="col-md-12 col-sm-12 col-xs 12"> <button id="start" class="container navbar btn btn-danger " > <h2>Start </h2></button></div>
 
-		<button id="wrong" class="container col-md-12 col-sm-12 col-xs 12 navbar btn btn-danger " > <h2>Wrong Key</h2><br><small>Try again</small> </button>
+		<button id="wrong"     class="container col-md-12 col-sm-12 col-xs 12 navbar btn btn-danger " > <h2>Wrong Key</h2><br><small>Try again</small> </button>
 
-		<button id="startOver" class="container col-md-12 col-sm-12 col-xs 12 btn btn-danger"> <h2>Start Over </h2><br><small>Try again</small></button>
-					
-		<button id="win" class="container col-md-12 col-sm-12 col-xs 12 btn btn-danger"> <h2>Congratulations!!<br>You have passed the test</h2> <br><small>Try again</small> </button>
+		<button id="startOver" class="container col-md-12 col-sm-12 col-xs-12 navbar btn btn-danger"> <h2>Start Over </h2><br><small>Try again</small></button>
+			
+		<button id="gameOver" class="container col-md-12 col-sm-12 col-xs-12 navbar btn btn-danger"> <h2>Gamer Over <br><br> The word is <span id="gameWord"></span></h2><br><small>Try again</small></button>
+
+		<button id="win" class="container col-md-12 col-sm-12 col-xs 12 navbar btn btn-success"> <h1>Congratulations!!<br>You have passed the test</h1> <br><h4>Try again</h4> </button>
 	
 	</div>
 
@@ -42,16 +45,20 @@
 
 		<div class="container panel panel-default">					
 
-					<h2 class="" >
+					<h2>
 						The Word is: <strong><em id="myWord"> &nbsp </em></strong>
 					</h2>
 				
-					<h2 class="" >
+					<h2>
 						You Chose: <em id="youChose"> &nbsp </em>
 					</h2>
 
-					<h2 class="">
-						<em id="tries"> &nbsp </em>
+					<h2>
+						You Have <em id="tries"> </em> tries.
+					</h2>
+
+					<h2 id="test">
+
 					</h2>
 		
 		</div>

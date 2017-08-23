@@ -3,21 +3,16 @@ document.getElementById("start").addEventListener("click", function(){
 	document.getElementById("section").style.display="initial";
 
 
-	game();
-
-});
 
 var words = ["apple", "mango", "pinapple"];
 
-var tries = 10;
+var t = 10;
+
+var win = 0;
 
 var test = [];
 
 var control = 0;
-
-function game(){
-
-
 
 var pcPicked = words[Math.floor(Math.random() * words.length)];
 
@@ -28,72 +23,142 @@ for (var i = 0; i < pcPicked.length; i++) {
  	test[i] = " _ ";
 }
 
+game(t);
 
-document.getElementById("myWord").innerHTML = " " + test;
-document.getElementById("tries").innerHTML = "You Have " + tries + " tries.";
 
-document.onkeyup = function(event){
+function game(tries){
 
-var userGuess = event.key;
+	document.getElementById("tries").innerHTML = tries;
+	document.getElementById("myWord").innerHTML = " " + test;
 
-if (userGuess.toLowerCase() < String.fromCharCode(97) || userGuess.toLowerCase() > String.fromCharCode(122) ||
-	userGuess < String.fromCharCode(97) || userGuess > String.fromCharCode(122)){
-
-	document.getElementById("wrong").style.display= "initial";
 	
-}
+	document.onkeyup = function(event){
 
-else if (userGuess >= String.fromCharCode(97) || userGuess <= String.fromCharCode(122)){
+		var userGuess = event.key;
 
-	document.getElementById("wrong").style.display= "none";
+		if (userGuess.toLowerCase() < String.fromCharCode(97) || userGuess.toLowerCase() > String.fromCharCode(122) ||
+			userGuess < String.fromCharCode(97) || userGuess > String.fromCharCode(122)){
 
-//Form Here
+			document.getElementById("wrong").style.display= "initial";
+	
+		}
 
-		for (var i = 0; i < pcPicked.length; i++) {
+		else if (userGuess >= String.fromCharCode(97) || userGuess <= String.fromCharCode(122)){
+
+			document.getElementById("wrong").style.display= "none";
+
+			//Form Here
+			var control = 0;
 			
-			if(pcPicked.charAt(i) == userGuess ){
+			for (var i = 0; i < pcPicked.length; i++) {
+			
+				if(pcPicked.charAt(i) == userGuess ){
 					test[i] = userGuess;
+					control = 1;
+					win++;
+					console.log(win);
+				}
+
+				if(win == pcPicked.length && test[i] !== " _ "){
+
+					document.getElementById("win").style.display= "initial";
+
+					document.getElementById("win").addEventListener("click", function(){
+
+						document.getElementById("win").style.display= "none";
+
+						document.getElementById("youChose").innerHTML = "";
+
+						pcPicked = words[Math.floor(Math.random() * words.length)];
+
+						
+						$test.empty();
+
+						for (var i = 0; i < pcPicked.length; i++) {
+ 	
+ 							test[i] = " _ ";
+						}
+
+						tries = 10;
+						game( tries );
+					});
+				}
+
 			}
 
+
+			if(control == 0){
+
+				tries--;
+				document.getElementById("tries").innerHTML = tries;
+			}
+	
+			if (control == 0 && tries == control) {
+		
+				document.getElementById("section").style.display = "none";
+				
+				document.getElementById("gameOver").style.display = "initial";
+
+				document.getElementById("gameWord").innerHTML = pcPicked;
+
+				document.getElementById("gameOver").addEventListener("click", function(){
+
+				document.getElementById("gameOver").style.display = "none";
+				
+				document.getElementById("section").style.display = "initial";
+				
+				document.getElementById("youChose").innerHTML = " ";
+
+
+				var pcPicked = words[Math.floor(Math.random() * words.length)];
+
+				var str = pcPicked;
+
+				for (var i = 0; i < pcPicked.length; i++) {
+ 	
+ 					test[i] = " _ ";
+				}
+
+					tries = 10;
+				
+					game();
+
+				});
+
+			}	
+
+		document.getElementById("startOver").style.display= "none";
+
+		document.getElementById("myWord").innerHTML = test;
+
+		document.getElementById("youChose").innerHTML = userGuess;
+
+
 		}
 
-
-	if(userGuess != pcPicked.charAt(i) ){
-		tries--;
-		document.getElementById("tries").innerHTML = "You Have " + tries + " tries.";
-		
-		if (tries < 1) {
-		
-			document.getElementById("startOver").style.display= "initial";
-			document.getElementById("section").style.display="none";
-			document.getElementById("startOver").innerHTML= "<h2>Game Over</h2> <p> <small>Try again</small></p>";
-			startOver();
-		}
-	}
-
-//To here	
-
-	document.getElementById("startOver").style.display= "none";
-
-	document.getElementById("myWord").innerHTML = test;
-
-	document.getElementById("youChose").innerHTML = userGuess;
-
-
-}
-
-};
+	};
 
 }//Game closing tag
 
-function startOver(){
-document.getElementById("startOver").addEventListener("click", function(){
+// function startOver(){
+// document.getElementById("startOver").addEventListener("click", function(){
 	
-	document.getElementById("startOver").style.display = "none";
-	document.getElementById("section").style.display = "initial";
-	document.getElementById("youChose").innerHTML = " ";
-	tries = 10;
-	game();
+// 	document.getElementById("startOver").style.display = "none";
+// 	document.getElementById("gameOver").style.display = "none";
+// 	document.getElementById("section").style.display = "initial";
+// 	document.getElementById("youChose").innerHTML = " ";
+// 	tries = 10;
+// 	game();
+
+// });
+// }
 
 });
-}
+
+
+
+// for(var i = 0; i <+ str.length; i++){
+    
+//     str = str.replace(str.charAt(i), "_");
+
+// }

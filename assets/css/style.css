@@ -24,6 +24,10 @@ h1{
 	display: none;
 }
 
+#gameOver{
+	display: none;
+}
+
 #wrong{
 	display: none;
 }
