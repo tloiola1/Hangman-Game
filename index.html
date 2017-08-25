@@ -17,10 +17,15 @@
 <body style="background-image: url(assets/images/skull.png);">
 
 <div class="wrapper">
+	<div class="container">
+
+		<img id="dead" class="container thumbnail" src="assets/images/dead.jpeg">
+	
+	</div>
 
 	<header class="navbar navbar-inverse">
 		
-		<nav class="container text-center">
+		<nav class="container text-center col-md-12 col-sm-12 col-xs 12">
 			
 			<h1>
 					HangMan
@@ -32,17 +37,18 @@
 	
 	<div class="container animated bounce infinite">
 					
-		<div class="col-md-12 col-sm-12 col-xs 12"> <button id="start" class="container navbar btn btn-danger " > <h2>Start </h2></button></div>
+		<div class="row col-md-12 col-sm-12 col-xs 12"> <button id="start" class="container navbar btn btn-danger" > <h2>Start </h2></button></div>
 
-		<button id="wrong"     class="container col-md-12 col-sm-12 col-xs 12 navbar btn btn-danger " > <h2>Wrong Key</h2><br><small>Try again</small> </button>
+		<div class="row col-md-12 col-sm-12 col-xs 12"><button id="wrong" class="container navbar btn btn-danger" > <h2>Wrong Key</h2><br><small>Try again</small> </button></div>
 
-		<button id="startOver" class="container col-md-12 col-sm-12 col-xs-12 navbar btn btn-danger"> <h2>Start Over </h2><br><small>Try again</small></button>
+		<div class="row col-md-12 col-sm-12 col-xs-12"><button id="startOver" class="container  navbar btn btn-danger"> <h2>Start Over </h2><br><small>Try again</small></button></div>
 			
-		<button id="gameOver" class="container col-md-12 col-sm-12 col-xs-12 navbar btn btn-danger"> <h2>Gamer Over <br><br> The word is <span id="gameWord"></span></h2><br><small>Try again</small></button>
+		<div class="row col-md-12 col-sm-12 col-xs-12"><button id="gameOver" class="container  navbar btn btn-danger"> <h2>Gamer Over <br>The word is <span id="gameWord"></span></h2><br><small>Try again</small></button></div>
 
-		<button id="win" class="container col-md-12 col-sm-12 col-xs 12 navbar btn btn-success"> <h1>Congratulations!!<br>You have survived the test.</h1> <br><h4><h2>The word is <span id="winWord"></span></h2><br>Try again</h4> </button>
+		<div class="row col-md-12 col-sm-12 col-xs 12"><button id="win" class="container navbar btn btn-success"> <h1>Congratulations!!<br>You have survived the test.</h1> <br><h4><h2>The word is <span id="winWord"></span></h2><br>Try again</h4> </button></div>
 	
 	</div>
+	
 
 	<section id="section">
 

@@ -3,17 +3,29 @@ body{
 		overflow-x: hidden;
 }
 
-h1{
-
+header{
+	margin-bottom: 100px !important;
 }
+
 .navbar{
+	position: relative;
 	color:#ebebeb !important;
 }
 
+#dead{
+	margin-top: -20px;
+	display: none;
+	position: absolute !important;
+}
+
+button{
+	position: relative !important;
+}
 #start{
 	height: 100px;
     -webkit-animation: mymove 0.5s infinite; /* Safari 4.0 - 8.0 */
     animation: mymove 0.5s infinite;
+
 }
 
 #section{
@@ -43,6 +55,28 @@ h1{
 
 }
 
-.green{
-	border: 2px solid green !important;
+@media only screen and (max-width: 1040px){
+	
+	#dead{
+		margin-top: 20px !important;
+	}
+
+}
+
+@media only screen and (max-width: 786px){
+
+	#dead{
+		margin-top: 80px;
+		width: 95%;
+	}
+	button{
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 640px){
+
+	#dead{
+		margin-top: 80px;
+	}
 }
